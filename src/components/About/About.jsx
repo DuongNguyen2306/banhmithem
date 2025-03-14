@@ -1,5 +1,5 @@
 import React from "react";
-import bannerxe from "../../assets/banner-xebanhmi.png"
+import bannerxe from "../../assets/banner-xebanhmi.jpg"
 
 const About = () => {
   return (
@@ -15,12 +15,12 @@ const About = () => {
           </div>
           <div>
             <div className="space-y-5 sm:p-16 pb-6">
-              <h1
-                data-aos="fade-up"
-                className="text-3xl sm:text-4xl font-bold font-serif"
-              >
-                Câu chuyện về bánh mì thêm
-              </h1>
+            <h1
+  data-aos="fade-up"
+  className="text-3xl sm:text-4xl font-bold font-roboto-serif"
+>
+  Câu chuyện về bánh mì thêm
+</h1>
               <p data-aos="fade-up" className="leading-8 tracking-wide">
                 Sáng sớm, tụi em mở tiệm bánh như mọi ngày. Hương bánh mì nóng giòn lan tỏa khắp con phố nhỏ. Một cậu bé nghèo đứng nhìn quầy bánh với ánh mắt thèm thuồng.
 

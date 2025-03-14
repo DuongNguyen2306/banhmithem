@@ -39,10 +39,10 @@ const Services = () => {
       <div className="dark:bg-black dark:text-white py-14 sm:min-h-[600px] sm:grid sm:place-items-center">
         <div className="container">
           <div className="pb-12">
-            <h1
-              data-aos="fade-up"
-              className="text-3xl font-semibold text-center sm:text-4xl font-serif"
-            >
+          <h1
+  data-aos="fade-up"
+  className="text-3xl sm:text-4xl font-bold font-roboto-serif"
+>
               LỢI ÍCH NHƯỢNG QUYỀN
             </h1>
           </div>

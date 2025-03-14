@@ -3,6 +3,7 @@ import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import { FaEnvelope, FaClock, FaPhone } from "react-icons/fa";
 import ResponsiveMenu from "./ResponsiveMenu";
+import logo from "../../assets/logo.png";
 
 export const Navlinks = [
   { id: 1, name: "HOME", link: "/#" },
@@ -18,9 +19,14 @@ const Navbar = ({ theme, setTheme }) => {
   return (
     <header className="relative z-10 shadow-md w-full duration-300">
       {/* Thanh thông tin trên cùng - Ẩn trên mobile */}
-      <div className="top-bar bg-black text-white py-2 px-8 hidden md:flex justify-between items-center">
+      <div 
+  className="top-bar text-white py-2 px-8 hidden md:flex justify-between items-center"
+  style={{ backgroundColor: "#CC9900" }}
+>
+
+
         <div className="logo">
-          <span className="text-3xl font-bold font-serif">Thêm</span>
+        <img src={logo} alt="logo" className="w-10 h-10 object-cover" />
         </div>
         <div className="contact-info flex gap-6 text-sm">
           <span className="flex items-center gap-2"><FaEnvelope /> LIÊN HỆ</span>

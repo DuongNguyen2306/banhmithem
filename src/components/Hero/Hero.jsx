@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import bannerxe from "../../assets/banner-xebanhmi.png"
+import bannerxe from "../../assets/xebanhmi.png"
 import AOS from "aos";
 
 const Hero = ({ theme }) => {
@@ -17,10 +17,11 @@ const Hero = ({ theme }) => {
             className="order-1 sm:order-2"
           >
             <img
-              src={theme === "dark" ? bannerxe : bannerxe}
-              alt=""
-              className="sm:scale-125 relative -z-10 max-h-[600px] drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)]"
-            />
+  src={theme === "dark" ? bannerxe : bannerxe}
+  alt=""
+  className="sm:scale-125 sm:translate-x-20 relative -z-10 max-h-[600px] drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)]"
+/>
+
           </div>
           <div className="space-y-5 order-2 sm:order-1 sm:pr-32 ">
             <p data-aos="fade-up" className="text-primary text-2xl font-serif">
