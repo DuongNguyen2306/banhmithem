@@ -1,26 +1,17 @@
 import React from "react";
-import xanh from "../../assets/xanh.png";
-import red from "../../assets/red.png";
-import vang from "../../assets/vang.png";
+import goiCoBan from "../../assets/5555.png";
+import goiNangCao from "../../assets/6666.png";
 
 const carList = [
   {
-    name: "Bánh mì thêm (Xanh nước)",
-    price: "2,300,000 VND",
-    image: xanh,
+    name: "Gói cơ bản",
+    image: goiCoBan,
     aosDelay: "0",
   },
   {
-    name: "Bánh mì thêm (Đỏ)",
-    price: "2,300,000 VND",
-    image: red,
+    name: "Gói nâng cao",
+    image: goiNangCao,
     aosDelay: "500",
-  },
-  {
-    name: "Bánh mì thêm (Vàng)",
-    price: "2,300,000 VND",
-    image: vang,
-    aosDelay: "1000",
   },
 ];
 
@@ -33,40 +24,31 @@ const CarList = () => {
           data-aos="fade-up"
           className="text-3xl sm:text-4xl font-semibold font-serif mb-3"
         >
-          Mẫu xe bánh mì
+          Các gói
         </h1>
         <p data-aos="fade-up" aos-delay="400" className="text-sm pb-10">
-          Nhiều mẫu mã theo sở thích.
+          Lựa chọn phù hợp với nhu cầu kinh doanh của bạn.
         </p>
-        {/* Car listing */}
-        <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
-            {carList.map((data) => (
-              <div
-                key={data.name}
-                data-aos="fade-up"
-                data-aos-delay={data.aosDelay}
-                className="space-y-3 border-2 border-gray-300 hover:border-primary p-3 rounded-xl relative group"
-              >
-                <div className="w-full h-[120px]">
-                  <img
-                    src={data.image}
-                    alt={data.name}
-                    className="w-full h-[120px] object-contain sm:translate-x-8 group-hover:sm:translate-x-16 duration-700"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <h1 className="text-primary font-semibold">{data.name}</h1>
-                  <div className="flex justify-between items-center text-xl font-semibold">
-                    <p>{data.price}</p>
-                    <a href="#" className="text-primary hover:underline">Details</a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+
+        {/* Gói - chỉ hiển thị ảnh full khung */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {carList.map((data) => (
+            <div
+              key={data.name}
+              data-aos="fade-up"
+              data-aos-delay={data.aosDelay}
+              className="border-2 border-gray-300 hover:border-primary rounded-xl overflow-hidden"
+            >
+              <img
+                src={data.image}
+                alt={data.name}
+                className="w-full h-full object-cover hover:scale-105 duration-500"
+              />
+            </div>
+          ))}
         </div>
-        {/* End of car listing */}
+
+        {/* Nút đăng ký */}
         <div className="grid place-items-center mt-8">
           <button data-aos="fade-up" className="button-outline">
             Đăng ký nhượng quyền ngay

@@ -14,7 +14,7 @@ const Contact = () => {
           </p>
           <ul className="text-gray-900 mt-4 space-y-2">
             <li>✔ Thời gian hoàn vốn 2 - 4 tháng</li>
-            <li>✔ Tỷ suất lợi nhuận lên đến 15 triệu/tháng/kiosk</li>
+            <li>✔ Lợi nhuận lên đến 15 triệu/tháng/kiosk</li>
           </ul>
         </div>
 
