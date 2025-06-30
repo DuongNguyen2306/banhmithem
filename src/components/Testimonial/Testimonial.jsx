@@ -39,10 +39,10 @@ const Testimonial = () => {
               data-aos="fade-up"
               className="text-3xl font-semibold text-center sm:text-4xl font-roboto-serif"
             >
-              Đối tác của bánh mì thêm
+              Khách hàng của bánh mì thêm
             </p>
             <p data-aos="fade-up" className="text-center sm:px-44">
-              Các đối tác quan trọng của chúng tôi
+              Các Khách hàng quan trọng của chúng tôi
             </p>
           </div>
 

@@ -58,7 +58,7 @@ const Services = () => {
                 <h1 className="text-2xl font-bold">{skill.name}</h1>
                 <p>{skill.description}</p>
                 <a
-                  href={skill.link}
+                  href="#register-form"
                   className="inline-block text-lg font-semibold py-3 text-primary group-hover:text-black duration-300"
                 >
                   Đăng ký nhượng quyền

@@ -6,8 +6,8 @@ import { FaCheck, FaStar, FaCrown, FaPhone, FaEnvelope, FaChartLine, FaUsers, Fa
 import AOS from "aos"
 import "aos/dist/aos.css"
 import emailjs from "emailjs-com"
-import goiCoBan from "../../assets/55555.png"
-import goiNangCao from "../../assets/66665.png"
+import goiCoBan from "../../assets/10.jpg"
+import goiNangCao from "../../assets/11.jpg"
 
 const PackageDetails = () => {
   const { packageType } = useParams()
@@ -255,22 +255,12 @@ const PackageDetails = () => {
               <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed">{pkg.description}</p>
 
               {/* Package Image */}
-              <div className="relative mb-10 rounded-2xl overflow-hidden group">
+              <div className="relative mb-10 rounded-2xl overflow-hidden">
                 <img
                   src={pkg.image || "/placeholder.svg"}
                   alt={`Hình minh họa ${pkg.name}`}
-                  className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-80 object-cover"
                 />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t ${isPremium ? "from-purple-900/60" : "from-yellow-900/60"} to-transparent`}
-                ></div>
-                {isPremium && (
-                  <div className="absolute top-6 right-6">
-                    <span className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                      PREMIUM
-                    </span>
-                  </div>
-                )}
               </div>
 
               {/* Features List */}
@@ -381,7 +371,7 @@ const PackageDetails = () => {
 
                   {/* Email */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-whitees font-semibold mb-3 text-sm uppercase tracking-wide">
                       Email nhận thông tin
                     </label>
                     <input
@@ -473,7 +463,7 @@ const PackageDetails = () => {
                   {/* Capital */}
                   <div>
                     <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
-                      Nguồn vốn hiện có
+                      Chọn Gói
                     </label>
                     <select
                       name="capital"
@@ -482,13 +472,13 @@ const PackageDetails = () => {
                       className="w-full p-4 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     >
                       <option value="" className="text-gray-800">
-                        Chọn mức vốn
+                        Gói
                       </option>
                       <option value="Nhiều hơn 7,5 triệu" className="text-gray-800">
-                        Nhiều hơn 7,5 triệu
+                        Gói cơ bản 4 triệu
                       </option>
-                      <option value="4-7 triệu" className="text-gray-800">
-                        4-7 triệu
+                      <option value="" className="text-gray-800">
+                        Gói nâng cao 7 triệu 
                       </option>
                     </select>
                   </div>

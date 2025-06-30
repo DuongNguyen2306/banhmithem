@@ -227,6 +227,7 @@ const Contact = () => {
               >
                 <option value="">Chọn</option>
                 <option value="Nhiều hơn 7,5 triệu">Nhiều hơn 7,5 triệu</option>
+                <option value="Dưới 7 triệu">Dưới 7 triệu</option>
               </select>
             </div>
             <div>

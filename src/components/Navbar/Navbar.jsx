@@ -37,7 +37,7 @@ const Navbar = ({ theme, setTheme }) => {
             <FaClock /> 08:00 - 17:00
           </span>
           <Link to="/our-story" className="flex items-center gap-2 hover:text-yellow-200 transition-colors">
-            <FaPhone /> 0981051510
+            <FaPhone /> 0794442282
           </Link>
 
           {/* Social Media Icons */}

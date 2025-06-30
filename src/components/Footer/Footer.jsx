@@ -30,11 +30,12 @@ const Footer = () => {
             <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3 font-serif">
               Thêm
             </h1>
-            <p className="text-sm">Bánh mì nóng giòn – Hương vị truyền thống!</p>
+            <p className="text-sm">Bánh mì được thêm chả, để bạn ráng thêm xíu nghen!
+</p>
             <br />
             <div className="flex items-center gap-3">
               <FaLocationArrow />
-              <p>Noida, Uttar Pradesh</p>
+              <p>Gò Vấp, HCM</p>
             </div>
             <a
               href="https://www.facebook.com/BanhMiThemSG"
@@ -43,7 +44,7 @@ const Footer = () => {
               className="flex items-center gap-3 mt-3 hover:text-yellow-600 transition-colors"
             >
               <FaMobileAlt />
-              <p>+91 123456789</p>
+              <p>+84 794442282</p>
             </a>
             {/* Social Handle */}
             <div className="flex items-center gap-3 mt-6">

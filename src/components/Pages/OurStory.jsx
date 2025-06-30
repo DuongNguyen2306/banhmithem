@@ -156,7 +156,7 @@ const OurStory = () => {
       <div className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container">
           <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Đối Tác Của Chúng Tôi</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Khách hàng Của Chúng Tôi</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Những người bạn đồng hành cùng Bánh Mì Thêm trên hành trình phát triển
             </p>
