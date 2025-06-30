@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import { FaCheck, FaStar, FaCrown, FaPhone, FaEnvelope, FaChartLine, FaUsers, FaTrophy } from "react-icons/fa"
 import AOS from "aos"
 import "aos/dist/aos.css"
+import emailjs from "emailjs-com"
 import goiCoBan from "../../assets/55555.png"
 import goiNangCao from "../../assets/66665.png"
 
@@ -79,7 +80,7 @@ const PackageDetails = () => {
       path: "advanced",
       stats: [
         { icon: <FaChartLine className="text-green-500" />, label: "Hoàn vốn", value: "1-2 tháng" },
-        { icon: <FaTrophy className="text-yellow-500" />, label: "Doanh Thu", value: "15-20tr/tháng" },
+        { icon: <FaTrophy className="text-yellow-500" />, label: "Doanh Thu", value: "10-15tr/tháng" },
         { icon: <FaUsers className="text-purple-500" />, label: "Phù hợp", value: "Chuyên nghiệp" },
       ],
       colors: {
@@ -116,7 +117,71 @@ const PackageDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Form submitted:", { ...formData, package: pkg.name, price: pkg.price })
-    alert(`Đăng ký gói ${pkg.name} thành công! Chúng tôi sẽ liên hệ bạn qua ${formData.email}.`)
+
+    // Gửi email thông báo
+    emailjs
+      .send(
+        "service_vpxlbn4", // Service ID
+        "template_w9b0ozl", // Template ID cho thông báo
+        {
+          title: formData.title,
+          fullName: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          city: formData.city,
+          district: formData.district,
+          hasLocation: formData.hasLocation,
+          hasStaff: formData.hasStaff,
+          capital: formData.capital,
+          franchiseFor: formData.franchiseFor,
+          package: pkg.name,
+          price: pkg.price,
+        },
+        "gTLx7aR5s8G42mdIG" // User ID
+      )
+      .then(
+        (response) => {
+          console.log("Notification email sent successfully:", response)
+
+          // Gửi email xác nhận
+          return emailjs.send(
+            "service_vpxlbn4", // Service ID
+            "template_keoog7y", // Template ID cho xác nhận
+            {
+              title: formData.title,
+              fullName: formData.fullName,
+              email: formData.email,
+            },
+            "gTLx7aR5s8G42mdIG" // User ID
+          )
+        },
+        (error) => {
+          console.error("Notification email error:", error)
+          alert("Có lỗi xảy ra khi gửi email thông báo. Vui lòng thử lại!")
+        }
+      )
+      .then(
+        (response) => {
+          console.log("Confirmation email sent successfully:", response)
+          alert(`Đăng ký gói ${pkg.name} thành công! Vui lòng kiểm tra email ${formData.email} để xác nhận.`)
+          setFormData({
+            title: "",
+            fullName: "",
+            phone: "",
+            email: "",
+            city: "",
+            district: "",
+            hasLocation: "",
+            hasStaff: "",
+            capital: "",
+            franchiseFor: "",
+          })
+        },
+        (error) => {
+          console.error("Confirmation email error:", error)
+          alert("Có lỗi xảy ra khi gửi email xác nhận. Vui lòng thử lại!")
+        }
+      )
   }
 
   const isPremium = pkg.path === "advanced"
