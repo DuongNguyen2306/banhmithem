@@ -19,64 +19,91 @@ const Contact = () => {
         </div>
 
         {/* Right Side - Form */}
-        <div className="md:w-1/2 bg-yellow-600 p-6 rounded-lg shadow-lg w-full">
+        <div id="register-form" className="md:w-1/2 bg-yellow-600 p-6 rounded-lg shadow-lg w-full">
           <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-900">Xưng hô</label>
               <select className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded">
-                <option>Anh</option>
-                <option>Chị</option>
+                <option value="">Chọn xưng hô</option>
+                <option value="Anh">Anh</option>
+                <option value="Chị">Chị</option>
               </select>
             </div>
             <div>
               <label className="block text-gray-900">Họ và tên</label>
-              <input type="text" placeholder="Nhập để điền" className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded" />
+              <input
+                type="text"
+                placeholder="Nhập để điền"
+                className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded"
+              />
             </div>
             <div>
               <label className="block text-gray-900">Số điện thoại</label>
-              <input type="text" placeholder="Nhập để điền" className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded" />
+              <input
+                type="text"
+                placeholder="Nhập để điền"
+                className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded"
+              />
             </div>
             <div>
               <label className="block text-gray-900">Email nhận thông tin</label>
-              <input type="email" placeholder="Nhập để điền" className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded" />
+              <input
+                type="email"
+                placeholder="Nhập để điền"
+                className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded"
+              />
             </div>
             <div>
               <label className="block text-gray-900">Địa chỉ</label>
-              <input type="text" placeholder="Thành phố/Tỉnh" className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded" />
+              <input
+                type="text"
+                placeholder="Thành phố/Tỉnh"
+                className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded"
+              />
             </div>
             <div>
-              <input type="text" placeholder="Quận / Huyện" className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded" />
+              <input
+                type="text"
+                placeholder="Quận / Huyện"
+                className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded"
+              />
             </div>
             <div>
               <label className="block text-gray-900">Bạn đã có mặt bằng kinh doanh chưa?</label>
               <select className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded">
-                <option>Đã có</option>
-                <option>Chưa có</option>
+                <option value="">Chọn</option>
+                <option value="Đã có">Đã có</option>
+                <option value="Chưa có">Chưa có</option>
               </select>
             </div>
             <div>
               <label className="block text-gray-900">Bạn đã có người bán hàng chưa?</label>
               <select className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded">
-                <option>Đã có</option>
-                <option>Chưa có</option>
+                <option value="">Chọn</option>
+                <option value="Đã có">Đã có</option>
+                <option value="Chưa có">Chưa có</option>
               </select>
             </div>
             <div>
               <label className="block text-gray-900">Bạn có nguồn vốn là bao nhiêu?</label>
               <select className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded">
-                <option>Nhiều hơn 7,5 triệu</option>
+                <option value="">Chọn</option>
+                <option value="Nhiều hơn 7,5 triệu">Nhiều hơn 7,5 triệu</option>
               </select>
             </div>
             <div>
               <label className="block text-gray-900">Bạn dự định nhượng quyền cho ai?</label>
               <select className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded">
-                <option>Bản thân</option>
-                <option>Người khác</option>
+                <option value="">Chọn</option>
+                <option value="Bản thân">Bản thân</option>
+                <option value="Người khác">Người khác</option>
               </select>
             </div>
           </form>
           <div className="mt-6 text-center">
-            <button className="bg-orange-700 text-white py-2 px-6 rounded-lg text-lg font-bold hover:bg-orange-800">Đăng ký</button>
+            <button className="bg-orange-700 text-white py-2 px-6 rounded-lg text-lg font-bold hover:bg-orange-800">
+              Đăng ký
+            </button>
           </div>
         </div>
       </div>
