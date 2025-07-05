@@ -14,11 +14,10 @@ import {
 } from "react-icons/fa"
 import AOS from "aos"
 import "aos/dist/aos.css"
-
-import huyImg from "../../assets/huy.jpg";
-import duongImg from "../../assets/duong.jpg";
-import khangImg from "../../assets/khang.jpg";
-
+import huyImg from "../../assets/huy.jpg"
+import duongImg from "../../assets/duong.jpg"
+import khangImg from "../../assets/khang.jpg"
+import logoImage from "../../assets/logoto.png"
 
 const OurStory = () => {
   useEffect(() => {
@@ -32,32 +31,31 @@ const OurStory = () => {
   }, [])
 
   const teamMembers = [
-  {
-    name: "Anh Huy",
-    location: "Vũng Tàu",
-    story: "Chuẩn bị nguyên liệu mỗi ngày là niềm vui của tôi.",
-    image: huyImg,
-    role: "Đối tác kinh doanh",
-    experience: "2 năm",
-  },
-  {
-    name: "Anh Dương",
-    location: "Phú Mỹ",
-    story: "Từ lúc tôi kinh doanh bánh mì tôi đã dậy sớm hơn.",
-    image: duongImg,
-    role: "Chủ cửa hàng",
-    experience: "3 năm",
-  },
-  {
-    name: "Anh Khang",
-    location: "Hồ Chí Minh",
-    story: "Hiện tôi đang theo học trường đại học FPT, nhưng tôi đã ra ngoài bán bánh mì",
-    image: khangImg,
-    role: "Sinh viên kinh doanh",
-    experience: "1 năm",
-  },
-];
-
+    {
+      name: "Anh Huy",
+      location: "Vũng Tàu",
+      story: "Chuẩn bị nguyên liệu mỗi ngày là niềm vui của tôi.",
+      image: huyImg,
+      role: "Đối tác kinh doanh",
+      experience: "2 năm",
+    },
+    {
+      name: "Anh Dương",
+      location: "Phú Mỹ",
+      story: "Từ lúc tôi kinh doanh bánh mì tôi đã dậy sớm hơn.",
+      image: duongImg,
+      role: "Chủ cửa hàng",
+      experience: "3 năm",
+    },
+    {
+      name: "Anh Khang",
+      location: "Hồ Chí Minh",
+      story: "Hiện tôi đang theo học trường đại học FPT, nhưng tôi đã ra ngoài bán bánh mì",
+      image: khangImg,
+      role: "Sinh viên kinh doanh",
+      experience: "1 năm",
+    },
+  ]
 
   const brandStory = [
     {
@@ -81,44 +79,83 @@ const OurStory = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50">
+    <div className="min-h-screen" style={{ background: "#ebdbb8" }}>
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-yellow-600 to-orange-600 text-white py-20">
+      <div className="relative overflow-hidden text-white py-20" style={{ background: "#ebdbb8" }}>
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container relative z-10">
           <div className="text-center" data-aos="fade-up">
-            <h1 className="text-5xl sm:text-6xl font-bold mb-6">
-              Câu Chuyện Của <span className="text-yellow-200">Thêm</span>
+            {/* Logo Section */}
+            <div className="mb-8" data-aos="zoom-in" data-aos-delay="200">
+              <img
+                src={logoImage || "/placeholder.svg"}
+                alt="Bánh Mì Thêm Logo"
+                className="w-48 h-32 sm:w-64 sm:h-40 lg:w-80 lg:h-48 mx-auto mb-6 object-contain shadow-2xl border-4 border-white/20 hover:scale-105 transition-transform duration-300 rounded-2xl bg-white/10 backdrop-blur-sm p-4"
+              />
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl font-bold mb-6 text-gray-900">
+              Câu Chuyện Của <span style={{ color: "#9e1c20" }}>Thêm</span>
             </h1>
-            <p className="text-xl sm:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-gray-800">
               Hành trình từ những chiếc bánh mì đầu tiên đến thương hiệu được yêu thích
             </p>
-            <div className="flex justify-center gap-6">
+          </div>
+        </div>
+      </div>
+
+      {/* Social Media Section */}
+      <div className="py-12 bg-white border-b-2 border-gray-100">
+        <div className="container">
+          <div className="text-center" data-aos="fade-up">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Kết Nối Với Chúng Tôi</h3>
+            <div className="flex justify-center gap-8">
               <a
                 href="https://www.facebook.com/BanhMiThemSG"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 p-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="group flex flex-col items-center"
+                data-aos="fade-up"
+                data-aos-delay="100"
               >
-                <FaFacebookF size={24} />
+                <div className="bg-blue-600 hover:bg-blue-700 p-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2 group-hover:scale-110">
+                  <FaFacebookF size={28} className="text-white" />
+                </div>
+                <span className="mt-3 text-gray-700 font-medium group-hover:text-blue-600 transition-colors">
+                  Facebook
+                </span>
               </a>
+
               <a
                 href="https://www.instagram.com/banhmithemsaigon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="group flex flex-col items-center"
+                data-aos="fade-up"
+                data-aos-delay="200"
               >
-                <FaInstagram size={24} />
+                <div className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2 group-hover:scale-110">
+                  <FaInstagram size={28} className="text-white" />
+                </div>
+                <span className="mt-3 text-gray-700 font-medium group-hover:text-pink-600 transition-colors">
+                  Instagram
+                </span>
               </a>
+
               <a
                 href="#"
                 onClick={(e) => {
                   e.preventDefault()
                   alert("TikTok đang cập nhật!")
                 }}
-                className="bg-black hover:bg-gray-800 p-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="group flex flex-col items-center"
+                data-aos="fade-up"
+                data-aos-delay="300"
               >
-                <FaTiktok size={24} />
+                <div className="bg-black hover:bg-gray-800 p-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2 group-hover:scale-110">
+                  <FaTiktok size={28} className="text-white" />
+                </div>
+                <span className="mt-3 text-gray-700 font-medium group-hover:text-black transition-colors">TikTok</span>
               </a>
             </div>
           </div>
@@ -134,7 +171,6 @@ const OurStory = () => {
               Từ những giá trị văn hóa Sài Gòn đến thương hiệu bánh mì được yêu thích
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {brandStory.map((story, index) => (
               <div
@@ -161,7 +197,6 @@ const OurStory = () => {
               Những người bạn đồng hành cùng Bánh Mì Thêm trên hành trình phát triển
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <div
@@ -182,7 +217,6 @@ const OurStory = () => {
                     <p className="text-yellow-300">{member.location}</p>
                   </div>
                 </div>
-
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-4">
                     <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -190,12 +224,10 @@ const OurStory = () => {
                     </span>
                     <span className="text-gray-500 text-sm">{member.experience}</span>
                   </div>
-
                   <div className="flex items-start gap-3">
                     <FaQuoteLeft className="text-yellow-500 mt-1 flex-shrink-0" size={16} />
                     <p className="text-gray-700 italic leading-relaxed">"{member.story}"</p>
                   </div>
-
                   <div className="flex justify-center mt-4">
                     <div className="flex text-yellow-400">
                       {[...Array(5)].map((_, i) => (
@@ -211,15 +243,14 @@ const OurStory = () => {
       </div>
 
       {/* Contact Information */}
-      <div className="py-20 bg-gradient-to-r from-yellow-600 to-orange-600 text-white">
+      <div className="py-20 text-white" style={{ background: "#ebdbb8" }}>
         <div className="container">
           <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-4xl font-bold mb-4">Liên Hệ Với Chúng Tôi</h2>
-            <p className="text-xl opacity-90 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">Liên Hệ Với Chúng Tôi</h2>
+            <p className="text-xl opacity-90 max-w-2xl mx-auto text-gray-800">
               Hãy cùng chúng tôi viết tiếp câu chuyện thành công của bạn
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div
               data-aos="fade-up"
@@ -227,68 +258,69 @@ const OurStory = () => {
               className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
             >
               <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaPhone size={24} />
+                <FaPhone size={24} className="text-gray-800" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Điện Thoại</h3>
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Điện Thoại</h3>
               <a
                 href="https://www.facebook.com/BanhMiThemSG"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-yellow-200 hover:text-white transition-colors"
+                className="text-gray-700 hover:text-gray-900 transition-colors"
               >
-                0981051510
+                0379151466
               </a>
             </div>
-
             <div
               data-aos="fade-up"
               data-aos-delay="200"
               className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
             >
               <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaEnvelope size={24} />
+                <FaEnvelope size={24} className="text-gray-800" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Email</h3>
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Email</h3>
               <a
                 href="https://www.facebook.com/BanhMiThemSG"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-yellow-200 hover:text-white transition-colors"
+                className="text-gray-700 hover:text-gray-900 transition-colors"
               >
                 contact@banhmithem.com
               </a>
             </div>
-
             <div
               data-aos="fade-up"
               data-aos-delay="400"
               className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
             >
               <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaClock size={24} />
+                <FaClock size={24} className="text-gray-800" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Giờ Làm Việc</h3>
-              <p className="text-yellow-200">08:00 - 17:00</p>
-              <p className="text-yellow-200">Thứ 2 - Chủ Nhật</p>
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Giờ Làm Việc</h3>
+              <p className="text-gray-700">08:00 - 17:00</p>
+              <p className="text-gray-700">Thứ 2 - Chủ Nhật</p>
             </div>
-
-            <div
+            <a
+              href="https://www.google.com/maps?q=B%C3%A1nh+m%C3%AC+Th%C3%AAm,+238+%C4%90.+Nguy%E1%BB%85n+V%C4%83n+Kh%E1%BB%91i,+Ph%C6%B0%E1%BB%9Dng+8,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh&ftid=0x3175290044cc40cb:0xde547445c71ca263&entry=gps&lucs=,94275304,94224825,94227247,94227248,94231188,47071704,47069508,94218641,94203019,47084304&g_ep=CAISEjI1LjI1LjMuNzcyMTMyNjA2MBgAINeCAypaLDk0Mjc1MzA0LDk0MjI0ODI1LDk0MjI3MjQ3LDk0MjI3MjQ4LDk0MjMxMTg4LDQ3MDcxNzA0LDQ3MDY5NTA4LDk0MjE4NjQxLDk0MjAzMDE5LDQ3MDg0MzA0QgJWTg%3D%3D&skid=8c958203-5c47-4920-a4dd-ed5c389717f4&g_st=ipc"
+              target="_blank"
+              rel="noopener noreferrer"
               data-aos="fade-up"
               data-aos-delay="600"
-              className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+              className="block text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg cursor-pointer"
             >
               <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaMapMarkerAlt size={24} />
+                <FaMapMarkerAlt size={24} className="text-gray-800" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Địa Chỉ</h3>
-              <p className="text-yellow-200">TP. Hồ Chí Minh</p>
-              <p className="text-yellow-200">Việt Nam</p>
-            </div>
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Địa Chỉ</h3>
+              <p className="text-gray-700 hover:text-gray-900 transition-colors">238 Đ. Nguyễn Văn Khối</p>
+              <p className="text-gray-700 hover:text-gray-900 transition-colors">Phường 8, Gò Vấp</p>
+              <p className="text-gray-700 hover:text-gray-900 transition-colors">TP. Hồ Chí Minh</p>
+              <p className="text-sm text-gray-600 mt-2 italic">📍 Nhấn để xem bản đồ</p>
+            </a>
           </div>
-
           {/* CTA Section */}
           <div className="text-center mt-16" data-aos="fade-up" data-aos-delay="800">
-            <h3 className="text-2xl font-bold mb-6">Sẵn sàng bắt đầu hành trình kinh doanh?</h3>
+            <h3 className="text-2xl font-bold mb-6 text-gray-900">Sẵn sàng bắt đầu hành trình kinh doanh?</h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="https://www.facebook.com/BanhMiThemSG"
@@ -299,8 +331,8 @@ const OurStory = () => {
                 💬 Nhắn tin Facebook
               </a>
               <a
-                href="tel:0981051510"
-                className="bg-white/20 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                href="tel:0379151466"
+                className="bg-white/20 backdrop-blur-sm text-gray-900 border-2 border-gray-900 px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 📞 Gọi ngay
               </a>

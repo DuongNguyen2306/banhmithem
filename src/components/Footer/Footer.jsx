@@ -1,41 +1,30 @@
+
 "use client"
 import { FaFacebook, FaInstagram, FaLinkedin, FaLocationArrow, FaMobileAlt, FaTiktok } from "react-icons/fa"
-
-const FooterLinks = [
-  {
-    title: "Home",
-    link: "/#",
-  },
-  {
-    title: "About",
-    link: "/#about",
-  },
-  {
-    title: "Contact",
-    link: "/#contact",
-  },
-  {
-    title: "Blog",
-    link: "/#blog",
-  },
-]
+import logoImage from '../../assets/logoto.png'
 
 const Footer = () => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 mt-14 rounded-t-3xl">
+    <div className="mt-14" style={{ backgroundColor: '#ebdbb8', fontFamily: 'Bahnschrift, sans-serif' }}>
       <section className="container">
-        <div className=" grid md:grid-cols-3 py-5">
+        <div className="flex flex-col md:flex-row justify-between items-start py-5">
           {/* company Details */}
-          <div className=" py-8 px-4 ">
-            <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3 font-serif">
+          <div className="py-8 px-4">
+            <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3" style={{ color: '#9e1c20' }}>
               Thêm
             </h1>
-            <p className="text-sm">Bánh mì được thêm chả, để bạn ráng thêm xíu nghen!
-</p>
+            <p className="text-sm">Bánh mì được thêm chả, để bạn ráng thêm xíu nghen!</p>
             <br />
             <div className="flex items-center gap-3">
               <FaLocationArrow />
-              <p>Gò Vấp, HCM</p>
+              <a
+                href="https://www.google.com/maps?q=B%C3%A1nh+m%C3%AC+Th%C3%AAm,+238+%C4%90.+Nguy%E1%BB%85n+V%C4%83n+Kh%E1%BB%91i,+Ph%C6%B0%E1%BB%9Dng+8,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh&ftid=0x3175290044cc40cb:0xde547445c71ca263&entry=gps&lucs=,94275304,94224825,94227247,94227248,94231188,47071704,47069508,94218641,94203019,47084304&g_ep=CAISEjI1LjI1LjMuNzcyMTMyNjA2MBgAINeCAypaLDk0Mjc1MzA0LDk0MjI0ODI1LDk0MjI3MjQ3LDk0MjI3MjQ4LDk0MjMxMTg4LDQ3MDcxNzA0LDQ3MDY5NTA4LDk0MjE4NjQxLDk0MjAzMDE5LDQ3MDg0MzA0QgJWTg%3D%3D&skid=8c958203-5c47-4920-a4dd-ed5c389717f4&g_st=ipc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-yellow-600 transition-colors"
+              >
+                238 Nguyễn Văn Khối, Gò Vấp, HCM
+              </a>
             </div>
             <a
               href="https://www.facebook.com/BanhMiThemSG"
@@ -44,7 +33,7 @@ const Footer = () => {
               className="flex items-center gap-3 mt-3 hover:text-yellow-600 transition-colors"
             >
               <FaMobileAlt />
-              <p>+84 794442282</p>
+              <p>+84 379151466</p>
             </a>
             {/* Social Handle */}
             <div className="flex items-center gap-3 mt-6">
@@ -85,56 +74,13 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          {/* Links */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 col-span-2 md:pl-10 ">
-            <div className="">
-              <div className="py-8 px-4 ">
-                <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">Important Links</h1>
-                <ul className={`flex flex-col gap-3`}>
-                  {FooterLinks.map((link, index) => (
-                    <li
-                      key={index}
-                      className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-yellow-600 space-x-1 text-gray-500 dark:text-gray-200"
-                    >
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="">
-              <div className="py-8 px-4 ">
-                <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">Links</h1>
-                <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link, index) => (
-                    <li
-                      key={index}
-                      className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-yellow-600 space-x-1 text-gray-500 dark:text-gray-200"
-                    >
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="">
-              <div className="py-8 px-4 ">
-                <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">Location</h1>
-                <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link, index) => (
-                    <li
-                      key={index}
-                      className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-yellow-600 space-x-1 text-gray-500 dark:text-gray-200"
-                    >
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+          {/* Logo */}
+          <div className="py-8 px-4 flex justify-end">
+            <img
+              src={logoImage}
+              alt="Logo Thêm"
+              className="w-64 h-64 sm:w-80 sm:h-80 object-contain rounded-none"
+            />
           </div>
         </div>
       </section>

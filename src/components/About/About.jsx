@@ -5,12 +5,14 @@ const About = () => {
   const [showBranches, setShowBranches] = useState(false);
 
   const branches = [
-    { name: "Chi nhánh Gò Vấp", address: "238 Nguyễn Văn Khối, Gò Vấp, Việt Nam" }
-    
+    { name: "Chi nhánh Gò Vấp", address: "238 Nguyễn Văn Khối, Gò Vấp, Việt Nam" },
   ];
 
   return (
-    <div className="dark:bg-dark bg-slate-100 sm:min-h-[600px] sm:grid sm:place-items-center duration-300">
+    <div
+      id="about"
+      className="dark:bg-dark bg-[#ebdbb8] sm:min-h-[600px] sm:grid sm:place-items-center duration-300"
+    >
       <div className="container">
         <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center">
           {/* Hình ảnh */}
@@ -28,10 +30,15 @@ const About = () => {
               <h1
                 data-aos="fade-up"
                 className="text-3xl sm:text-4xl font-bold font-roboto-serif"
+                style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
               >
                 Câu chuyện về Bánh mì Thêm
               </h1>
-              <p data-aos="fade-up" className="leading-8 tracking-wide whitespace-pre-line">
+              <p
+                data-aos="fade-up"
+                className="leading-8 tracking-wide whitespace-pre-line"
+                style={{ fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+              >
                 Thừa hưởng sự hào sảng của nét văn hoá Sài Gòn, những bữa ăn của con người nơi đây thêm phần trọn vẹn khi có chén cơm, dĩa rau trụng, chén nước mắm, ly trà đá... thêm miễn phí.
 
                 Thêm một chút, chẳng tốn gì nhiều, nhưng cả người bán lẫn người mua đều thêm nhiều chút niềm vui.
@@ -43,7 +50,12 @@ const About = () => {
                 Sài Gòn mà, ai cũng ráng, cùng Thêm ráng thêm chút nữa nghen!
               </p>
               <div className="flex gap-4">
-                <a href="#register-form" data-aos="fade-up" className="button-outline">
+                <a
+                  href="#register-form"
+                  data-aos="fade-up"
+                  className="button-outline"
+                  style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+                >
                   Đăng ký nhượng quyền
                 </a>
                 <button
@@ -52,6 +64,7 @@ const About = () => {
                   className="button-outline"
                   onClick={() => setShowBranches(!showBranches)}
                   aria-label="Xem danh sách chi nhánh Bánh mì Thêm"
+                  style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
                 >
                   Xem chi nhánh
                 </button>
@@ -61,10 +74,19 @@ const About = () => {
                   data-aos="fade-up"
                   className="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md"
                 >
-                  <h3 className="text-xl font-semibold mb-2">Danh sách chi nhánh</h3>
+                  <h3
+                    className="text-xl font-semibold mb-2"
+                    style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+                  >
+                    Danh sách chi nhánh
+                  </h3>
                   <ul className="space-y-2">
                     {branches.map((branch) => (
-                      <li key={branch.name} className="text-sm">
+                      <li
+                        key={branch.name}
+                        className="text-sm"
+                        style={{ color: "#000000", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+                      >
                         <strong>{branch.name}</strong>: {branch.address}
                       </li>
                     ))}

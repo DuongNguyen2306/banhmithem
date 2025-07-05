@@ -78,7 +78,7 @@ const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
             className="flex items-center gap-2 mt-2 hover:text-blue-500 transition-colors"
             onClick={closeMenu}
           >
-            <FaPhone /> <span>0981051510</span>
+            <FaPhone /> <span>0379151466</span>
           </Link>
 
           {/* Social Media */}

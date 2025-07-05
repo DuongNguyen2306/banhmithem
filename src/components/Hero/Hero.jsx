@@ -20,28 +20,38 @@ const Hero = ({ theme }) => {
             <img
               src={theme === "dark" ? bannerxe : bannerxe}
               alt=""
-              className="sm:scale-125 sm:translate-x-20 relative -z-10 max-h-[600px] drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)]"
+              className="sm:scale-125 translate-x-40 relative -z-10 max-h-[600px] drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)]"
             />
           </div>
           <div className="space-y-5 order-2 sm:order-1 sm:pr-32">
-            <p data-aos="fade-up" className="text-primary text-2xl font-serif">
+            <p
+              data-aos="fade-up"
+              className="text-2xl font-serif"
+              style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+            >
               Xe bánh mì Thêm
             </p>
             <h1
               data-aos="fade-up"
               data-aos-delay="600"
               className="text-5xl lg:text-7xl font-semibold font-serif"
+              style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
             >
               Thêm
             </h1>
-            <p data-aos="fade-up" data-aos-delay="1000">
+            <p
+              data-aos="fade-up"
+              data-aos-delay="1000"
+              style={{ fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+            >
               Bánh mì nóng giòn – Hương vị truyền thống!
             </p>
             <a
               href="#register-form"
               data-aos="fade-up"
               data-aos-delay="1500"
-              className="rounded-md bg-primary hover:bg-primary/80 transition duration-500 py-2 px-6 text-black inline-block"
+              className="rounded-md hover:bg-[#ebdbb8]/80 transition duration-500 py-2 px-6 inline-block"
+              style={{ backgroundColor: "#ebdbb8", color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
             >
               Đăng ký nhượng quyền
             </a>

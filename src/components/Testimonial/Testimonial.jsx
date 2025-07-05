@@ -31,17 +31,25 @@ const Testimonial = () => {
   return (
     <>
       <span id="about"></span>
-      <div className="dark:bg-black dark:text-white py-14 sm:pb-24">
+      <div
+        className="dark:bg-black dark:text-white py-14 sm:pb-24"
+        style={{ fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+      >
         <div className="container">
           {/* Header */}
           <div className="space-y-4 pb-12">
             <p
               data-aos="fade-up"
               className="text-3xl font-semibold text-center sm:text-4xl font-roboto-serif"
+              style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
             >
               Khách hàng của bánh mì thêm
             </p>
-            <p data-aos="fade-up" className="text-center sm:px-44">
+            <p
+              data-aos="fade-up"
+              className="text-center sm:px-44"
+              style={{ fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+            >
               Các Khách hàng quan trọng của chúng tôi
             </p>
           </div>
@@ -53,7 +61,8 @@ const Testimonial = () => {
                 key={skill.name}
                 data-aos="fade-up"
                 data-aos-delay={skill.aosDelay}
-                className="card text-center group space-y-3 sm:space-y-6 p-4 sm:py-12 dark:bg-white/20 bg-gray-100 duration-300 rounded-lg"
+                className="card text-center group space-y-3 sm:space-y-6 p-4 sm:py-12 bg-[#ebdbb8] duration-300 rounded-lg"
+                style={{ fontFamily: "'Bahnschrift', Arial, sans-serif" }}
               >
                 <div className="grid place-items-center">
                   <img
@@ -63,8 +72,15 @@ const Testimonial = () => {
                   />
                 </div>
                 <div className="text-2xl">⭐⭐⭐⭐⭐</div>
-                <p>{skill.description}</p>
-                <p className="text-center font-semibold">{skill.name}</p>
+                <p style={{ fontFamily: "'Bahnschrift', Arial, sans-serif" }}>
+                  {skill.description}
+                </p>
+                <p
+                  className="text-center font-semibold"
+                  style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+                >
+                  {skill.name}
+                </p>
               </div>
             ))}
           </div>

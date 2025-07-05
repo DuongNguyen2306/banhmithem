@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import goiCoBan from "../../assets/5555.png";
-import goiNangCao from "../../assets/6666.png";
+import goiCoBan from "../../assets/12.jpg";
+import goiNangCao from "../../assets/13.jpg";
 
 const carList = [
   {
@@ -20,16 +20,22 @@ const carList = [
 
 const CarList = () => {
   return (
-    <div className="pb-24">
+    <div className="pb-24" style={{ fontFamily: "'Bahnschrift', Arial, sans-serif" }}>
       <div className="container">
         {/* Heading */}
         <h1
           data-aos="fade-up"
           className="text-3xl sm:text-4xl font-semibold font-serif mb-3"
+          style={{ color: "#9e1c20", fontFamily: "'Bahnschrift', Arial, sans-serif" }}
         >
-          Các gói
+          CÁC GÓI
         </h1>
-        <p data-aos="fade-up" data-aos-delay="400" className="text-sm pb-10">
+        <p
+          data-aos="fade-up"
+          data-aos-delay="400"
+          className="text-sm pb-10"
+          style={{ fontFamily: "'Bahnschrift', Arial, sans-serif" }}
+        >
           Lựa chọn phù hợp với nhu cầu kinh doanh của bạn.
         </p>
 
@@ -54,7 +60,17 @@ const CarList = () => {
 
         {/* Nút đăng ký */}
         <div className="grid place-items-center mt-8">
-          <a href="#register-form" className="button-outline">
+          <a
+            href="#register-form"
+            className="button-outline"
+            style={{
+              color: "#9e1c20",
+              backgroundColor: "#ebdbb8",
+              fontFamily: "'Bahnschrift', Arial, sans-serif",
+              padding: "8px 16px",
+              borderRadius: "4px",
+            }}
+          >
             Đăng ký nhượng quyền ngay
           </a>
         </div>

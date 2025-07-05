@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { FaCheck, FaStar, FaCrown, FaPhone, FaEnvelope, FaChartLine, FaUsers, FaTrophy } from "react-icons/fa"
@@ -56,9 +55,9 @@ const PackageDetails = () => {
         { icon: <FaUsers className="text-blue-500" />, label: "Phù hợp", value: "Người mới" },
       ],
       colors: {
-        gradient: "from-yellow-500 to-orange-500",
+        gradient: "from-[#ebdbb8] to-transparent",
         badge: "bg-yellow-100 text-yellow-800",
-        accent: "text-yellow-600",
+        accent: "text-[#9e1c20]",
         border: "border-yellow-200",
       },
     },
@@ -81,13 +80,13 @@ const PackageDetails = () => {
       stats: [
         { icon: <FaChartLine className="text-green-500" />, label: "Hoàn vốn", value: "1-2 tháng" },
         { icon: <FaTrophy className="text-yellow-500" />, label: "Doanh Thu", value: "10-15tr/tháng" },
-        { icon: <FaUsers className="text-purple-500" />, label: "Phù hợp", value: "Chuyên nghiệp" },
+        { icon: <FaUsers className="text-amber-600" />, label: "Phù hợp", value: "Chuyên nghiệp" },
       ],
       colors: {
-        gradient: "from-purple-500 via-yellow-500 to-orange-500",
-        badge: "bg-gradient-to-r from-purple-100 to-yellow-100 text-purple-800",
-        accent: "text-purple-600",
-        border: "border-purple-200",
+        gradient: "from-amber-500 via-yellow-500 to-orange-500",
+        badge: "bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-900",
+        accent: "text-amber-700",
+        border: "border-amber-300",
       },
     },
   ]
@@ -97,10 +96,10 @@ const PackageDetails = () => {
   if (!pkg) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div className="text-center p-8">
+        <div className="text-center p-8" style={{ fontFamily: "Bahnschrift, sans-serif" }}>
           <div className="text-6xl mb-4">😔</div>
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Gói không tồn tại</h1>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">Không tìm thấy thông tin gói bạn đang tìm kiếm.</p>
+          <p className="text-gray-900 dark:text-white mb-8">Không tìm thấy thông tin gói bạn đang tìm kiếm.</p>
           <button className="bg-yellow-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-yellow-700 transition-colors shadow-lg">
             Quay lại trang chủ
           </button>
@@ -116,8 +115,11 @@ const PackageDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (!formData.email) {
+      alert("Vui lòng nhập email hoặc Zalo nhận thông tin!")
+      return
+    }
     console.log("Form submitted:", { ...formData, package: pkg.name, price: pkg.price })
-
     // Gửi email thông báo
     emailjs
       .send(
@@ -137,12 +139,11 @@ const PackageDetails = () => {
           package: pkg.name,
           price: pkg.price,
         },
-        "gTLx7aR5s8G42mdIG" // User ID
+        "gTLx7aR5s8G42mdIG", // User ID
       )
       .then(
         (response) => {
-          console.log("Notification email sent successfully:", response)
-
+          console.log("Notification email sent successfully:", response.status, response.text)
           // Gửi email xác nhận
           return emailjs.send(
             "service_vpxlbn4", // Service ID
@@ -152,17 +153,17 @@ const PackageDetails = () => {
               fullName: formData.fullName,
               email: formData.email,
             },
-            "gTLx7aR5s8G42mdIG" // User ID
+            "gTLx7aR5s8G42mdIG", // User ID
           )
         },
         (error) => {
           console.error("Notification email error:", error)
           alert("Có lỗi xảy ra khi gửi email thông báo. Vui lòng thử lại!")
-        }
+        },
       )
       .then(
         (response) => {
-          console.log("Confirmation email sent successfully:", response)
+          console.log("Confirmation email sent successfully:", response.status, response.text)
           alert(`Đăng ký gói ${pkg.name} thành công! Vui lòng kiểm tra email ${formData.email} để xác nhận.`)
           setFormData({
             title: "",
@@ -180,7 +181,7 @@ const PackageDetails = () => {
         (error) => {
           console.error("Confirmation email error:", error)
           alert("Có lỗi xảy ra khi gửi email xác nhận. Vui lòng thử lại!")
-        }
+        },
       )
   }
 
@@ -188,7 +189,8 @@ const PackageDetails = () => {
 
   return (
     <div
-      className={`min-h-screen ${isPremium ? "bg-gradient-to-br from-purple-50 via-yellow-50 to-orange-50" : "bg-gradient-to-br from-yellow-50 to-orange-50"} dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800`}
+      className={`min-h-screen ${isPremium ? "bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50" : "bg-gradient-to-br from-[#ebdbb8] to-transparent"} dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800`}
+      style={{ fontFamily: "Bahnschrift, sans-serif" }}
     >
       {/* Hero Section */}
       <div className="relative overflow-hidden pt-20 pb-16">
@@ -203,15 +205,23 @@ const PackageDetails = () => {
               {isPremium ? "Gói cao cấp - Khuyến nghị" : "Gói phổ biến nhất"}
             </div>
             <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Chi Tiết <span className={`${pkg.colors.accent}`}>{pkg.name}</span>
+              {pkg.path === "basic" ? (
+                <>
+                  <span className="text-gray-900 dark:text-white">Chi tiết</span>{" "}
+                  <span style={{ color: "#9e1c20" }}>Gói Cơ Bản</span>
+                </>
+              ) : (
+                <>
+                  Chi Tiết <span className={`${pkg.colors.accent}`}>{pkg.name}</span>
+                </>
+              )}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-gray-900 dark:text-white max-w-3xl mx-auto leading-relaxed">
               {isPremium
                 ? "Giải pháp kinh doanh chuyên nghiệp với mặt bằng cố định và thiết bị cao cấp"
                 : "Bắt đầu kinh doanh bánh mì với chi phí thấp và hiệu quả cao nhất"}
             </p>
           </div>
-
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" data-aos="fade-up" data-aos-delay="200">
             {pkg.stats.map((stat, index) => (
@@ -221,39 +231,42 @@ const PackageDetails = () => {
               >
                 <div className="text-4xl mb-4 flex justify-center">{stat.icon}</div>
                 <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{stat.value}</div>
-                <div className="text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
+                <div className="text-gray-900 dark:text-white font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
-
       {/* Main Content */}
       <div className="container pb-20">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-16">
           {/* Package Details */}
           <div data-aos="fade-right">
             <div
-              className={`bg-white dark:bg-gray-800 rounded-3xl p-10 shadow-2xl ${isPremium ? "border-2 border-purple-200 dark:border-purple-800" : "border-2 border-yellow-200 dark:border-yellow-800"}`}
+              className={`bg-white dark:bg-gray-800 rounded-3xl p-10 shadow-2xl ${isPremium ? "border-2 border-amber-300 dark:border-amber-700" : "border-2 border-yellow-200 dark:border-yellow-800"}`}
             >
               {/* Package Header */}
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-4">
-                  {isPremium && <FaCrown className="text-purple-600 text-3xl" />}
-                  <h2 className="text-4xl font-bold text-gray-900 dark:text-white">{pkg.name}</h2>
+                  {isPremium && <FaCrown className="text-amber-600 text-3xl" />}
+                  <h2
+                    className="text-4xl font-bold text-gray-900 dark:text-white"
+                    style={{ color: pkg.path === "basic" ? "#9e1c20" : "" }}
+                  >
+                    {pkg.name}
+                  </h2>
                 </div>
                 <div className="text-right">
                   <div
-                    className={`text-4xl font-bold ${isPremium ? "bg-gradient-to-r from-purple-600 to-yellow-600 bg-clip-text text-transparent" : pkg.colors.accent}`}
+                    className={`text-4xl font-bold ${isPremium ? "bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent" : ""}`}
+                    style={{ color: pkg.path === "basic" ? "#9e1c20" : "" }}
                   >
                     {pkg.price}
                   </div>
-                  <div className="text-sm text-gray-500 font-medium">VNĐ</div>
+                  <div className="text-sm text-gray-900 dark:text-white font-medium">VNĐ</div>
                 </div>
               </div>
-
-              <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed">{pkg.description}</p>
-
+              <p className="text-gray-900 dark:text-white mb-8 text-lg leading-relaxed">{pkg.description}</p>
               {/* Package Image */}
               <div className="relative mb-10 rounded-2xl overflow-hidden">
                 <img
@@ -262,7 +275,6 @@ const PackageDetails = () => {
                   className="w-full h-80 object-cover"
                 />
               </div>
-
               {/* Features List */}
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
@@ -273,75 +285,76 @@ const PackageDetails = () => {
                     key={idx}
                     className={`flex items-start gap-4 p-4 rounded-xl transition-all duration-300 hover:shadow-md ${
                       isPremium
-                        ? "bg-gradient-to-r from-purple-50 to-yellow-50 dark:from-purple-900/20 dark:to-yellow-900/20 border border-purple-100 dark:border-purple-800"
+                        ? "bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border border-amber-200 dark:border-amber-700"
                         : "bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-800"
                     }`}
                   >
                     <div
-                      className={`p-2 rounded-full ${isPremium ? "bg-purple-100 dark:bg-purple-900" : "bg-green-100 dark:bg-green-900"}`}
+                      className={`p-2 rounded-full ${isPremium ? "bg-amber-100 dark:bg-amber-800" : "bg-green-100 dark:bg-green-900"}`}
                     >
                       <FaCheck
-                        className={`${isPremium ? "text-purple-600 dark:text-purple-400" : "text-green-600 dark:text-green-400"}`}
+                        className={`${isPremium ? "text-amber-600 dark:text-amber-400" : "text-green-600 dark:text-green-400"}`}
                         size={14}
                       />
                     </div>
-                    <span className="text-gray-700 dark:text-gray-300 font-medium leading-relaxed">{feature}</span>
+                    <span className="text-gray-900 dark:text-white font-medium leading-relaxed">{feature}</span>
                   </div>
                 ))}
               </div>
-
               {/* Note */}
               {pkg.note && (
                 <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500 rounded-r-xl">
-                  <p className="text-blue-800 dark:text-blue-200 italic font-medium">{pkg.note}</p>
+                  <p className="text-gray-900 dark:text-white italic font-medium">{pkg.note}</p>
                 </div>
               )}
             </div>
           </div>
-
           {/* Registration Form */}
           <div data-aos="fade-left">
             <div
-              className={`bg-gradient-to-br ${pkg.colors.gradient} rounded-3xl p-10 shadow-2xl text-white sticky top-8`}
+              className={`bg-gradient-to-br ${pkg.colors.gradient} rounded-3xl p-10 shadow-2xl text-gray-900 dark:text-white sticky top-8`}
+              style={{ fontFamily: "Bahnschrift, sans-serif" }}
             >
               {/* Form Header */}
               <div className="text-center mb-10">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   {isPremium && <FaCrown size={28} />}
-                  <h2 className="text-3xl font-bold">{isPremium ? "Đăng ký gói cao cấp" : "Đăng ký nhượng quyền"}</h2>
+                  <h2 className="text-3xl font-bold" style={{ color: "#9e1c20" }}>
+                    {isPremium ? "Đăng ký gói cao cấp" : "Đăng ký nhượng quyền"}
+                  </h2>
                 </div>
-                <p className="text-white/90 text-lg">Điền thông tin để được tư vấn miễn phí ngay hôm nay</p>
+                <p className="text-gray-900 dark:text-white text-lg">
+                  Điền thông tin để được tư vấn miễn phí ngay hôm nay
+                </p>
               </div>
-
               {/* Form */}
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Title */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Xưng hô
                     </label>
                     <select
                       name="title"
                       value={formData.title}
                       onChange={handleChange}
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     >
-                      <option value="" className="text-gray-800">
+                      <option value="" className="text-gray-900 dark:text-white">
                         Chọn xưng hô
                       </option>
-                      <option value="Anh" className="text-gray-800">
+                      <option value="Anh" className="text-gray-900 dark:text-white">
                         Anh
                       </option>
-                      <option value="Chị" className="text-gray-800">
+                      <option value="Chị" className="text-gray-900 dark:text-white">
                         Chị
                       </option>
                     </select>
                   </div>
-
                   {/* Full Name */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Họ và tên
                     </label>
                     <input
@@ -350,13 +363,12 @@ const PackageDetails = () => {
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="Nhập họ và tên đầy đủ"
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-900 dark:placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     />
                   </div>
-
                   {/* Phone */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Số điện thoại
                     </label>
                     <input
@@ -365,28 +377,27 @@ const PackageDetails = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="Nhập số điện thoại"
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-900 dark:placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     />
                   </div>
-
-                  {/* Email */}
+                  {/* Email or Zalo */}
                   <div>
-                    <label className="block text-whitees font-semibold mb-3 text-sm uppercase tracking-wide">
-                      Email nhận thông tin
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                      Email hoặc Zalo nhận thông tin
                     </label>
                     <input
-                      type="email"
+                      type="text"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Nhập địa chỉ email"
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      placeholder="Nhập email hoặc Zalo"
+                      required
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-900 dark:placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     />
                   </div>
-
                   {/* City */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Thành phố/Tỉnh
                     </label>
                     <input
@@ -395,13 +406,12 @@ const PackageDetails = () => {
                       value={formData.city}
                       onChange={handleChange}
                       placeholder="Thành phố/Tỉnh"
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-900 dark:placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     />
                   </div>
-
                   {/* District */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Quận/Huyện
                     </label>
                     <input
@@ -410,128 +420,122 @@ const PackageDetails = () => {
                       value={formData.district}
                       onChange={handleChange}
                       placeholder="Quận/Huyện"
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-900 dark:placeholder-white/70 border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     />
                   </div>
-
                   {/* Has Location */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Đã có mặt bằng kinh doanh?
                     </label>
                     <select
                       name="hasLocation"
                       value={formData.hasLocation}
                       onChange={handleChange}
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     >
-                      <option value="" className="text-gray-800">
+                      <option value="" className="text-gray-900 dark:text-white">
                         Chọn
                       </option>
-                      <option value="Đã có" className="text-gray-800">
+                      <option value="Đã có" className="text-gray-900 dark:text-white">
                         Đã có
                       </option>
-                      <option value="Chưa có" className="text-gray-800">
+                      <option value="Chưa có" className="text-gray-900 dark:text-white">
                         Chưa có
                       </option>
                     </select>
                   </div>
-
                   {/* Has Staff */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Đã có người bán hàng?
                     </label>
                     <select
                       name="hasStaff"
                       value={formData.hasStaff}
                       onChange={handleChange}
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     >
-                      <option value="" className="text-gray-800">
+                      <option value="" className="text-gray-900 dark:text-white">
                         Chọn
                       </option>
-                      <option value="Đã có" className="text-gray-800">
+                      <option value="Đã có" className="text-gray-900 dark:text-white">
                         Đã có
                       </option>
-                      <option value="Chưa có" className="text-gray-800">
+                      <option value="Chưa có" className="text-gray-900 dark:text-white">
                         Chưa có
                       </option>
                     </select>
                   </div>
-
                   {/* Capital */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Chọn Gói
                     </label>
                     <select
                       name="capital"
                       value={formData.capital}
                       onChange={handleChange}
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     >
-                      <option value="" className="text-gray-800">
+                      <option value="" className="text-gray-900 dark:text-white">
                         Gói
                       </option>
-                      <option value="Nhiều hơn 7,5 triệu" className="text-gray-800">
+                      <option value="Nhiều hơn 7,5 triệu" className="text-gray-900 dark:text-white">
                         Gói cơ bản 4 triệu
                       </option>
-                      <option value="" className="text-gray-800">
-                        Gói nâng cao 7 triệu 
+                      <option value="Nhiều hơn 7,5 triệu" className="text-gray-900 dark:text-white">
+                        Gói nâng cao 7 triệu
                       </option>
                     </select>
                   </div>
-
                   {/* Franchise For */}
                   <div>
-                    <label className="block text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
                       Nhượng quyền cho ai?
                     </label>
                     <select
                       name="franchiseFor"
                       value={formData.franchiseFor}
                       onChange={handleChange}
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
                     >
-                      <option value="" className="text-gray-800">
+                      <option value="" className="text-gray-900 dark:text-white">
                         Chọn
                       </option>
-                      <option value="Bản thân" className="text-gray-800">
+                      <option value="Bản thân" className="text-gray-900 dark:text-white">
                         Bản thân
                       </option>
-                      <option value="Người khác" className="text-gray-800">
+                      <option value="Người khác" className="text-gray-900 dark:text-white">
                         Người khác
                       </option>
                     </select>
                   </div>
                 </div>
-
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className={`w-full bg-white py-5 px-8 rounded-2xl text-xl font-bold hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 ${isPremium ? "text-purple-600" : "text-orange-600"}`}
+                  className={`w-full bg-white py-5 px-8 rounded-2xl text-xl font-bold hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 ${isPremium ? "text-amber-700" : "text-orange-600"}`}
                 >
                   {isPremium ? "🚀 Đăng ký gói cao cấp ngay" : "✨ Đăng ký nhượng quyền ngay"}
                 </button>
               </form>
-
               {/* Contact Info */}
               <div className="mt-10 pt-8 border-t border-white/20">
                 <div className="text-center mb-6">
-                  <p className="text-white/90 font-medium">Hoặc liên hệ trực tiếp với chúng tôi</p>
+                  <p className="text-gray-900 dark:text-white font-medium">Hoặc liên hệ trực tiếp với chúng tôi</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <a
-                    href="tel:0981051510"
-                    className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    href="tel:0379151466"
+                    className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     <FaPhone size={18} />
-                    0981051510
+                    0379151466
                   </a>
                   <a
                     href="mailto:contact@banhmithem.com"
-                    className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     <FaEnvelope size={18} />
                     {isPremium ? "Tư vấn cao cấp" : "Gửi email tư vấn"}
