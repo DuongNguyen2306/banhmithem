@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi"
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi"
 import { FaEnvelope, FaClock, FaPhone, FaFacebookF, FaInstagram, FaTiktok, FaChevronDown } from "react-icons/fa"
@@ -9,7 +9,7 @@ import ResponsiveMenu from "./ResponsiveMenu"
 export const Navlinks = [
   { id: 1, name: "HOME", link: "/" },
   { id: 2, name: "Về bánh mì Thêm", link: "/#about" },
-  { id: 3, name: "Cửa hàng bánh mì Thêm", link: "" },
+  { id: 3, name: "Cửa hàng bánh mì Thêm", link: "/stores" },
   {
     id: 4,
     name: "Các gói nhượng quyền",
@@ -25,6 +25,7 @@ export const Navlinks = [
 const Navbar = ({ theme, setTheme }) => {
   const [showMenu, setShowMenu] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const navigate = useNavigate()
 
   const toggleMenu = () => setShowMenu(!showMenu)
 
@@ -38,6 +39,12 @@ const Navbar = ({ theme, setTheme }) => {
 
   const handleMouseLeave = () => {
     setActiveDropdown(null)
+  }
+
+  const handleDropdownLinkClick = (link) => {
+    setActiveDropdown(null)
+    setShowMenu(false)
+    navigate(link)
   }
 
   return (
@@ -174,7 +181,7 @@ const Navbar = ({ theme, setTheme }) => {
                                 color: "#9e1c20",
                                 fontFamily: "'Bahnschrift', Arial, sans-serif",
                               }}
-                              onClick={() => setActiveDropdown(null)}
+                              onClick={() => handleDropdownLinkClick(item.link)}
                             >
                               {item.name}
                             </Link>

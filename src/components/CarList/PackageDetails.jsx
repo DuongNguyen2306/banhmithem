@@ -108,6 +108,17 @@ const PackageDetails = () => {
     )
   }
 
+  // Set capital dựa vào gói hiện tại khi component mount
+  useEffect(() => {
+    let capitalValue = "";
+    if (pkg.path === "basic") {
+      capitalValue = "Gói cơ bản 4 triệu";
+    } else if (pkg.path === "advanced") {
+      capitalValue = "Gói nâng cao 7 triệu";
+    }
+    setFormData((prev) => ({ ...prev, capital: capitalValue }));
+  }, [pkg.path]);
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
@@ -174,7 +185,7 @@ const PackageDetails = () => {
             district: "",
             hasLocation: "",
             hasStaff: "",
-            capital: "",
+            capital: formData.capital, // Giữ nguyên capital vì fixed
             franchiseFor: "",
           })
         },
@@ -467,26 +478,19 @@ const PackageDetails = () => {
                       </option>
                     </select>
                   </div>
-                  {/* Capital */}
+                  {/* Capital - Bây giờ là fixed và disabled */}
                   <div>
                     <label className="block text-gray-900 dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
-                      Chọn Gói
+                      Gói đã chọn
                     </label>
                     <select
                       name="capital"
                       value={formData.capital}
                       onChange={handleChange}
-                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300"
+                      disabled // Không cho thay đổi
+                      className="w-full p-4 bg-white/20 backdrop-blur-sm text-gray-900 dark:text-white border border-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300 opacity-80 cursor-not-allowed"
                     >
-                      <option value="" className="text-gray-900 dark:text-white">
-                        Gói
-                      </option>
-                      <option value="Nhiều hơn 7,5 triệu" className="text-gray-900 dark:text-white">
-                        Gói cơ bản 4 triệu
-                      </option>
-                      <option value="Nhiều hơn 7,5 triệu" className="text-gray-900 dark:text-white">
-                        Gói nâng cao 7 triệu
-                      </option>
+                      <option value={formData.capital}>{formData.capital}</option>
                     </select>
                   </div>
                   {/* Franchise For */}

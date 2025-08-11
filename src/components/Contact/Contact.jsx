@@ -101,7 +101,7 @@ const Contact = () => {
             Tư vấn nhượng quyền <br /> Bánh mì Thêm
           </h1>
           <p className="text-lg font-semibold text-[#9e1c20] mt-2">
-            Chỉ từ 5,5 triệu để bắt đầu
+            Chỉ từ 4 triệu để bắt đầu
           </p>
           <ul className="text-black mt-4 space-y-2">
             <li>✔ Thời gian hoàn vốn 2 - 4 tháng</li>
@@ -147,7 +147,7 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="block text-[#9e1c20]">Zalo nhận thông tin</label>
+              <label className="block text-[#9e1c20]">Zalo hoặc email nhận thông tin</label>
               <input
                 type="text"
                 name="email"
@@ -196,16 +196,16 @@ const Contact = () => {
               </select>
             </div>
             <div>
-              <label className="block text-[#9e1c20]">Bạn có nguồn vốn là bao nhiêu?</label>
+              <label className="block text-[#9e1c20]">Chọn gói</label>
               <select
                 name="nguonVon"
                 value={formData.nguonVon}
                 onChange={handleChange}
                 className="w-full p-2 bg-yellow-400 text-black border border-gray-700 rounded"
               >
-                <option value="">Chọn</option>
-                <option value="Nhiều hơn 7,5 triệu">Nhiều hơn 7,5 triệu</option>
-                <option value="Dưới 7 triệu">Dưới 7 triệu</option>
+                <option value="">Chọn gói</option>
+                <option value="Gói cơ bản 4 triệu">Gói cơ bản 4 triệu</option>
+                <option value="Gói nâng cao 7 triệu">Gói nâng cao 7 triệu</option>
               </select>
             </div>
             <div>
